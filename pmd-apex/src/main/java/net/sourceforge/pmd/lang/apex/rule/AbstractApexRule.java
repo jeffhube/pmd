@@ -83,6 +83,7 @@ import net.sourceforge.pmd.lang.apex.ast.ASTStatement;
 import net.sourceforge.pmd.lang.apex.ast.ASTStatementExecuted;
 import net.sourceforge.pmd.lang.apex.ast.ASTSuperMethodCallExpression;
 import net.sourceforge.pmd.lang.apex.ast.ASTSuperVariableExpression;
+import net.sourceforge.pmd.lang.apex.ast.ASTSwitchStatement;
 import net.sourceforge.pmd.lang.apex.ast.ASTTernaryExpression;
 import net.sourceforge.pmd.lang.apex.ast.ASTThisMethodCallExpression;
 import net.sourceforge.pmd.lang.apex.ast.ASTThisVariableExpression;
@@ -99,6 +100,11 @@ import net.sourceforge.pmd.lang.apex.ast.ASTVariableDeclaration;
 import net.sourceforge.pmd.lang.apex.ast.ASTVariableDeclarationStatements;
 import net.sourceforge.pmd.lang.apex.ast.ASTVariableExpression;
 import net.sourceforge.pmd.lang.apex.ast.ASTWhileLoopStatement;
+import net.sourceforge.pmd.lang.apex.ast.ASTValueWhenBlock;
+import net.sourceforge.pmd.lang.apex.ast.ASTTypeWhenBlock;
+import net.sourceforge.pmd.lang.apex.ast.ASTElseWhenBlock;
+import net.sourceforge.pmd.lang.apex.ast.ASTWhenLiteralCase;
+import net.sourceforge.pmd.lang.apex.ast.ASTWhenEnumCase;
 import net.sourceforge.pmd.lang.apex.ast.ApexNode;
 import net.sourceforge.pmd.lang.apex.ast.ApexParserVisitor;
 import net.sourceforge.pmd.lang.ast.Node;
@@ -490,6 +496,11 @@ public abstract class AbstractApexRule extends AbstractRule
     }
 
     @Override
+    public Object visit(ASTSwitchStatement node, Object data) {
+    	return visit((ApexNode<?>) node, data);
+    }
+
+    @Override
     public Object visit(ASTThisMethodCallExpression node, Object data) {
         return visit((ApexNode<?>) node, data);
     }
@@ -583,4 +594,30 @@ public abstract class AbstractApexRule extends AbstractRule
     public Object visit(ASTStatementExecuted node, Object data) {
         return visit((ApexNode<?>) node, data);
     }
+
+    @Override
+    public Object visit(ASTValueWhenBlock node, Object data) {
+        return visit((ApexNode<?>) node, data);
+    }
+
+    @Override
+    public Object visit(ASTTypeWhenBlock node, Object data) {
+        return visit((ApexNode<?>) node, data);
+    }
+
+    @Override
+    public Object visit(ASTElseWhenBlock node, Object data) {
+        return visit((ApexNode<?>) node, data);
+    }
+
+    @Override
+    public Object visit(ASTWhenLiteralCase node, Object data) {
+        return visit((ApexNode<?>) node, data);
+    }
+
+    @Override
+    public Object visit(ASTWhenEnumCase node, Object data) {
+        return visit((ApexNode<?>) node, data);
+    }
+
 }

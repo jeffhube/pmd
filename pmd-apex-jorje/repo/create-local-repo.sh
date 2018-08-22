@@ -1,7 +1,7 @@
 #!/bin/bash
 
-URL=https://raw.githubusercontent.com/forcedotcom/salesforcedx-vscode/54b127925eebfcfd14cd9988018438ba49ec3d43/packages/salesforcedx-vscode-apex/out/apex-jorje-lsp.jar
-VERSION=2017-11-17
+URL=https://raw.githubusercontent.com/forcedotcom/salesforcedx-vscode/b3e22a1cefb1af09bafe279582b877c0bc7c006e/packages/salesforcedx-vscode-apex/out/apex-jorje-lsp.jar
+VERSION=2018-08-17
 FILENAME=apex-jorje-lsp-${VERSION}.jar
 FILENAME_MINIMIZED=apex-jorje-lsp-minimized-${VERSION}.jar
 

@@ -207,6 +207,16 @@ public class TestAccessEvaluator implements AccessEvaluator {
         return globalComponents.contains(type.getApexName());
     }
 
+    @Override
+    public boolean isSecondGenerationPackagingNamespace(Namespace namespace) {
+        return false;
+    }
+
+    @Override
+    public boolean useTestValueForAnonymousScriptLengthLimit() {
+        return false;
+    }
+
     /**
      * Things isManagedPackageInstalled will say 'false' to.
      */

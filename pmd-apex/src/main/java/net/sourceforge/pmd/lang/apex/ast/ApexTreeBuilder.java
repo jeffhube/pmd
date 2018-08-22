@@ -87,6 +87,7 @@ import apex.jorje.semantic.ast.statement.DoLoopStatement;
 import apex.jorje.semantic.ast.statement.ExpressionStatement;
 import apex.jorje.semantic.ast.statement.FieldDeclaration;
 import apex.jorje.semantic.ast.statement.FieldDeclarationStatements;
+import apex.jorje.semantic.ast.statement.ForEachStatement;
 import apex.jorje.semantic.ast.statement.ForLoopStatement;
 import apex.jorje.semantic.ast.statement.IfBlockStatement;
 import apex.jorje.semantic.ast.statement.IfElseBlockStatement;
@@ -96,12 +97,17 @@ import apex.jorje.semantic.ast.statement.ReturnStatement;
 import apex.jorje.semantic.ast.statement.RunAsBlockStatement;
 import apex.jorje.semantic.ast.statement.Statement;
 import apex.jorje.semantic.ast.statement.StatementExecuted;
+import apex.jorje.semantic.ast.statement.SwitchStatement;
 import apex.jorje.semantic.ast.statement.ThrowStatement;
 import apex.jorje.semantic.ast.statement.TryCatchFinallyBlockStatement;
 import apex.jorje.semantic.ast.statement.VariableDeclaration;
 import apex.jorje.semantic.ast.statement.VariableDeclarationStatements;
 import apex.jorje.semantic.ast.statement.WhileLoopStatement;
-import apex.jorje.semantic.ast.statement.foreachstatement.ForEachStatement;
+import apex.jorje.semantic.ast.statement.ValueWhenBlock;
+import apex.jorje.semantic.ast.statement.TypeWhenBlock;
+import apex.jorje.semantic.ast.statement.ElseWhenBlock;
+import apex.jorje.semantic.ast.statement.WhenCases.LiteralCase;
+import apex.jorje.semantic.ast.statement.WhenCases.EnumCase;
 import apex.jorje.semantic.ast.visitor.AdditionalPassScope;
 import apex.jorje.semantic.ast.visitor.AstVisitor;
 import apex.jorje.semantic.exception.Errors;
@@ -183,6 +189,7 @@ public final class ApexTreeBuilder extends AstVisitor<AdditionalPassScope> {
         register(StatementExecuted.class, ASTStatementExecuted.class);
         register(SuperMethodCallExpression.class, ASTSuperMethodCallExpression.class);
         register(SuperVariableExpression.class, ASTSuperVariableExpression.class);
+        register(SwitchStatement.class, ASTSwitchStatement.class);
         register(TernaryExpression.class, ASTTernaryExpression.class);
         register(ThisMethodCallExpression.class, ASTThisMethodCallExpression.class);
         register(ThisVariableExpression.class, ASTThisVariableExpression.class);
@@ -199,6 +206,11 @@ public final class ApexTreeBuilder extends AstVisitor<AdditionalPassScope> {
         register(VariableDeclarationStatements.class, ASTVariableDeclarationStatements.class);
         register(VariableExpression.class, ASTVariableExpression.class);
         register(WhileLoopStatement.class, ASTWhileLoopStatement.class);
+        register(ValueWhenBlock.class, ASTValueWhenBlock.class);
+        register(TypeWhenBlock.class, ASTTypeWhenBlock.class);
+        register(ElseWhenBlock.class, ASTElseWhenBlock.class);
+        register(LiteralCase.class, ASTWhenLiteralCase.class);
+        register(EnumCase.class, ASTWhenEnumCase.class);
     }
 
     private static <T extends AstNode> void register(Class<T> nodeType, Class<? extends AbstractApexNode<T>> nodeAdapterType) {
@@ -516,6 +528,11 @@ public final class ApexTreeBuilder extends AstVisitor<AdditionalPassScope> {
     }
 
     @Override
+    public boolean visit(SwitchStatement node, AdditionalPassScope scope) {
+    	return visit(node);
+    }
+
+    @Override
     public boolean visit(ThrowStatement node, AdditionalPassScope scope) {
         return visit(node);
     }
@@ -659,4 +676,30 @@ public final class ApexTreeBuilder extends AstVisitor<AdditionalPassScope> {
     public boolean visit(NewKeyValueObjectExpression node, AdditionalPassScope scope) {
         return visit(node);
     }
+
+    @Override
+    public boolean visit(ValueWhenBlock node, AdditionalPassScope scope) {
+        return visit(node);
+    }
+
+    @Override
+    public boolean visit(TypeWhenBlock node, AdditionalPassScope scope) {
+        return visit(node);
+    }
+
+    @Override
+    public boolean visit(ElseWhenBlock node, AdditionalPassScope scope) {
+        return visit(node);
+    }
+
+    @Override
+    public boolean visit(LiteralCase node, AdditionalPassScope scope) {
+        return visit(node);
+    }
+
+    @Override
+    public boolean visit(EnumCase node, AdditionalPassScope scope) {
+        return visit(node);
+    }
+
 }

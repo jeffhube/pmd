@@ -356,6 +356,11 @@ public class ApexParserVisitorAdapter implements ApexParserVisitor {
     }
 
     @Override
+    public Object visit(ASTSwitchStatement node, Object data) {
+    	return visit((ApexNode<?>) node, data);
+    }
+
+    @Override
     public Object visit(ASTThisMethodCallExpression node, Object data) {
         return visit((ApexNode<?>) node, data);
     }
@@ -449,4 +454,30 @@ public class ApexParserVisitorAdapter implements ApexParserVisitor {
     public Object visit(ASTStatementExecuted node, Object data) {
         return visit((ApexNode<?>) node, data);
     }
+
+    @Override
+    public Object visit(ASTValueWhenBlock node, Object data) {
+        return visit((ApexNode<?>) node, data);
+    }
+
+    @Override
+    public Object visit(ASTTypeWhenBlock node, Object data) {
+        return visit((ApexNode<?>) node, data);
+    }
+
+    @Override
+    public Object visit(ASTElseWhenBlock node, Object data) {
+        return visit((ApexNode<?>) node, data);
+    }
+
+    @Override
+    public Object visit(ASTWhenLiteralCase node, Object data) {
+        return visit((ApexNode<?>) node, data);
+    }
+
+    @Override
+    public Object visit(ASTWhenEnumCase node, Object data) {
+        return visit((ApexNode<?>) node, data);
+    }
+
 }
